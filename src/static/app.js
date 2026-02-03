@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginModal = document.getElementById("login-modal");
   const loginForm = document.getElementById("login-form");
   const loginMessage = document.getElementById("login-message");
-  const closeModal = document.querySelector(".close");
+  const closeModal = document.getElementById("close-modal");
+  const cancelBtn = document.getElementById("cancel-btn");
   const signupContainer = document.getElementById("signup-container");
 
   // Track login state
@@ -203,6 +204,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   closeModal.addEventListener("click", () => {
+    loginModal.classList.add("hidden");
+    loginForm.reset();
+    loginMessage.classList.add("hidden");
+  });
+
+  cancelBtn.addEventListener("click", () => {
     loginModal.classList.add("hidden");
     loginForm.reset();
     loginMessage.classList.add("hidden");
