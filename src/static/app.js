@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const signupForm = document.getElementById("signup-form");
   const messageDiv = document.getElementById("message");
   const userIcon = document.getElementById("user-icon");
+  const userSection = document.getElementById("user-section");
+  const userText = document.getElementById("user-text");
   const loginModal = document.getElementById("login-modal");
   const loginForm = document.getElementById("login-form");
   const loginMessage = document.getElementById("login-message");
@@ -182,13 +184,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Handle login modal
-  userIcon.addEventListener("click", () => {
+  userSection.addEventListener("click", () => {
     if (isLoggedIn) {
       // Logout
       if (confirm(`Logout ${currentTeacher}?`)) {
         isLoggedIn = false;
         currentTeacher = null;
         userIcon.textContent = "👤";
+        userText.textContent = "Login";
         userIcon.title = "Login";
         signupContainer.classList.add("hidden");
         fetchActivities(); // Refresh to hide delete buttons
@@ -235,6 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
         isLoggedIn = true;
         currentTeacher = result.username;
         userIcon.textContent = "👨‍🏫";
+        userText.textContent = currentTeacher;
         userIcon.title = `Logged in as ${currentTeacher}`;
         loginModal.classList.add("hidden");
         loginForm.reset();
